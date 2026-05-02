@@ -12,7 +12,7 @@ const PrivateRoute = ({ children }) => {
 
   // If not authenticated, redirect to login
   if (!user) {
-    return <Navigate to="/login" replace />
+    return <Navigate to="/" replace />
   }
 
   // If authenticated, render children

@@ -6,13 +6,13 @@ const Layout = () => {
   const { user, logout } = useAuth();
   const location = useLocation();
 
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/recommended", label: "Top Picks" },
-    { path: "/watchlist", label: "Watchlist" },
-    { path: "/history", label: "History" },
-    { path: "/profile", label: "Profile" },
-  ];
+const navItems = [
+  { path: "/app", label: "Home" },
+  { path: "/app/recommended", label: "For You" },
+  { path: "/app/watchlist", label: "Watchlist" },
+  { path: "/app/history", label: "History" },
+  { path: "/app/profile", label: "Profile" },
+];
 
   return (
     <div className="flex min-h-screen bg-gray-900 text-white">

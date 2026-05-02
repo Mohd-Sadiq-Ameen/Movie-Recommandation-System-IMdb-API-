@@ -4,13 +4,16 @@ import MovieCard from "../components/MovieCard";
 import FilterBar from "../components/FilterBar";
 import { useCachedFetch } from "../hooks/useCachedFetch";
 
+// 👇 Define API base URL once
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+
 const Home = () => {
   // ----- Cached data with instant display -----
   const { data: trending, loading: trendingLoading } = useCachedFetch(
     "trending",
     () =>
       axios
-        .get("http://localhost:5000/api/movies/trending")
+        .get(`${API_BASE_URL}/movies/trending`)
         .then((res) => res.data.results.slice(0, 6))
   );
 
@@ -18,7 +21,7 @@ const Home = () => {
     "latest",
     () =>
       axios
-        .get("http://localhost:5000/api/movies/discover", {
+        .get(`${API_BASE_URL}/movies/discover`, {
           params: { sort_by: "release_date.desc", page: 1 },
         })
         .then((res) => res.data.results.slice(0, 6))
@@ -45,7 +48,7 @@ const Home = () => {
       if (filters.year) params.year = filters.year;
       if (filters.min_rating) params.min_rating = filters.min_rating;
       if (filters.language) params.language = filters.language;
-      const res = await axios.get("http://localhost:5000/api/movies/search", {
+      const res = await axios.get(`${API_BASE_URL}/movies/search`, {
         params,
       });
       setSearchResults(res.data.results);
@@ -66,7 +69,7 @@ const Home = () => {
       if (newFilters.min_rating) params.min_rating = newFilters.min_rating;
       if (newFilters.language) params.language = newFilters.language;
       axios
-        .get("http://localhost:5000/api/movies/search", { params })
+        .get(`${API_BASE_URL}/movies/search`, { params })
         .then((res) => setSearchResults(res.data.results))
         .catch((err) => console.error(err))
         .finally(() => setLoadingSearch(false));

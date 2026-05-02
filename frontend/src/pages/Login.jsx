@@ -22,7 +22,7 @@ const Login = () => {
     if (result.success) {
       setSuccess(result.message)
       setTimeout(() => {
-        navigate('/')
+        navigate('/app')
       }, 500)
     } else {
       setError(result.message)

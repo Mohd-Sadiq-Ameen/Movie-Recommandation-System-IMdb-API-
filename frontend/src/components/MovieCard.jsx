@@ -19,7 +19,7 @@ const MovieCard = ({ movie }) => {
   }
 
   return (
-    <Link to={`/movie/${tmdbId}`} className="block">
+    <Link to={`/app/movie/${tmdbId}`} className="block">
       <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200 cursor-pointer">
         <img src={posterUrl} alt={title} className="w-full h-64 object-cover" />
         <div className="p-3">
